@@ -210,7 +210,7 @@ async def settings(message: types.Message):
 
 @dp.callback_query(F.data == "change_tz")
 async def change_tz(callback: types.CallbackQuery):
-    await callback.message.answer(
+    await callback.message.edit_text(
         "Выбери новый часовой пояс:",
         reply_markup=timezone_keyboard()
     )
@@ -219,7 +219,7 @@ async def change_tz(callback: types.CallbackQuery):
 
 @dp.callback_query(F.data == "change_time")
 async def change_time(callback: types.CallbackQuery):
-    await callback.message.answer(
+    await callback.message.edit_text(
         "Выбери новое время:",
         reply_markup=time_keyboard()
     )
@@ -248,8 +248,8 @@ async def set_timezone(callback: types.CallbackQuery):
 
     update_user(user_id, messages, idx, hour, last_sent, timezone=tz_str)
 
-    await callback.message.answer(
-        f"✅ Часовой пояс сохранён: {tz_label}\n\nТеперь выбери удобное время для утреннего сообщения:",
+    await callback.message.edit_text(
+        f"✅ Часовой пояс: {tz_label}\n\nТеперь выбери удобное время:",
         reply_markup=time_keyboard()
     )
     await callback.answer()
@@ -279,7 +279,7 @@ async def set_time(callback: types.CallbackQuery):
 
     update_user(user_id, messages, idx, hour, None, timezone=timezone)
 
-    await callback.message.answer(f"💛 Готово! Буду писать тебе в {hour}:00")
+    await callback.message.edit_text(f"💛 Готово! Буду писать тебе в {hour}:00 ✨")
     await callback.answer()
 
 
