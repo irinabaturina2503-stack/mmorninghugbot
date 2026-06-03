@@ -126,7 +126,7 @@ async def start(message: types.Message):
         )
     else:
         await message.answer(
-            "Want to change the time of morning messages?",
+            "Ты хочешь поменять время получения смс?",
             reply_markup=time_keyboard()
         )
 
@@ -146,7 +146,7 @@ async def set_time(callback: types.CallbackQuery):
 
     update_user(user_id, messages, idx, hour, None)
 
-    await callback.message.answer(f"💛 Done! I'll message you at {hour}:00")
+    await callback.message.answer(f"💛 Готово! Я буду писать тебе в {hour}:00")
     await callback.answer()
 
 
