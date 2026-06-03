@@ -197,6 +197,10 @@ async def sender_loop():
     while True:
         now = datetime.now()
         hour_now = now.hour
+        
+        print("Server time:", now)
+
+        hour_now = now.hour
         today = now.strftime("%Y-%m-%d")
 
         users = get_users()
